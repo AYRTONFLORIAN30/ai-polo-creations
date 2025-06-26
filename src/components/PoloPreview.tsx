@@ -57,36 +57,36 @@ export const PoloPreview = ({ design, config }: PoloPreviewProps) => {
   };
 
   return (
-    <Card className="w-full shadow-lg border-0 bg-white/70 backdrop-blur-sm">
-      <CardHeader className="text-center">
-        <CardTitle className="flex items-center justify-center gap-2 text-2xl font-bold text-gray-800">
-          <Eye className="h-6 w-6 text-purple-500" />
+    <Card className="w-full shadow-xl border-0 bg-white/90 backdrop-blur-sm">
+      <CardHeader className="text-center pb-8">
+        <CardTitle className="flex items-center justify-center gap-3 text-3xl font-light text-slate-900">
+          <Eye className="h-8 w-8 text-blue-600" />
           Vista Previa
         </CardTitle>
-        <p className="text-gray-600">
+        <p className="text-lg text-slate-600 font-light mt-2">
           Así se verá tu polo personalizado
         </p>
       </CardHeader>
       
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-8">
         <div className="relative mx-auto max-w-sm">
           {/* Polo base */}
           <div 
-            className="relative w-80 h-96 mx-auto rounded-2xl shadow-xl transition-all duration-500"
+            className="relative w-80 h-96 mx-auto rounded-3xl shadow-2xl transition-all duration-500 border border-slate-200/50"
             style={{ backgroundColor: config.color }}
           >
             {/* Cuello */}
             <div 
-              className={`absolute top-0 left-1/2 transform -translate-x-1/2 w-16 bg-gray-200 ${getCollarStyle()}`}
+              className={`absolute top-0 left-1/2 transform -translate-x-1/2 w-16 bg-slate-200 ${getCollarStyle()}`}
             />
             
             {/* Mangas */}
             <div 
-              className="absolute top-4 -left-8 w-16 h-24 rounded-l-full"
+              className="absolute top-4 -left-8 w-16 h-24 rounded-l-full border border-slate-200/50"
               style={{ backgroundColor: config.color }}
             />
             <div 
-              className="absolute top-4 -right-8 w-16 h-24 rounded-r-full"
+              className="absolute top-4 -right-8 w-16 h-24 rounded-r-full border border-slate-200/50"
               style={{ backgroundColor: config.color }}
             />
             
@@ -96,7 +96,7 @@ export const PoloPreview = ({ design, config }: PoloPreviewProps) => {
                 <img
                   src={design.imageUrl}
                   alt="Diseño personalizado"
-                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  className="w-full h-full object-cover rounded-2xl shadow-lg border border-white/50"
                 />
               </div>
             )}
@@ -104,11 +104,11 @@ export const PoloPreview = ({ design, config }: PoloPreviewProps) => {
             {/* Placeholder si no hay diseño */}
             {!design && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="w-20 h-20 mx-auto mb-4 bg-gray-200 rounded-lg flex items-center justify-center">
-                    <Eye className="h-8 w-8 text-gray-400" />
+                <div className="text-center p-8">
+                  <div className="w-24 h-24 mx-auto mb-6 bg-slate-100 rounded-2xl flex items-center justify-center">
+                    <Eye className="h-10 w-10 text-slate-400" />
                   </div>
-                  <p className="text-gray-500 text-sm">
+                  <p className="text-slate-500 font-light">
                     Tu diseño aparecerá aquí
                   </p>
                 </div>
@@ -118,23 +118,23 @@ export const PoloPreview = ({ design, config }: PoloPreviewProps) => {
         </div>
 
         {/* Detalles del producto */}
-        <div className="bg-gray-50 rounded-lg p-4 space-y-2">
-          <div className="flex justify-between">
-            <span className="font-medium text-gray-700">Talla:</span>
-            <span className="text-gray-900">{config.size}</span>
+        <div className="bg-slate-50/80 rounded-2xl p-6 space-y-4">
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-slate-700">Talla:</span>
+            <span className="text-slate-900 font-semibold">{config.size}</span>
           </div>
-          <div className="flex justify-between">
-            <span className="font-medium text-gray-700">Cuello:</span>
-            <span className="text-gray-900">
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-slate-700">Cuello:</span>
+            <span className="text-slate-900 font-semibold">
               {config.collarType === "crew" && "Redondo"}
               {config.collarType === "v-neck" && "En V"}
               {config.collarType === "polo" && "Polo"}
               {config.collarType === "high" && "Alto"}
             </span>
           </div>
-          <div className="flex justify-between">
-            <span className="font-medium text-gray-700">Posición:</span>
-            <span className="text-gray-900">
+          <div className="flex justify-between items-center">
+            <span className="font-medium text-slate-700">Posición:</span>
+            <span className="text-slate-900 font-semibold">
               {config.designPosition === "center" && "Centro"}
               {config.designPosition === "top-left" && "Superior Izq."}
               {config.designPosition === "top-right" && "Superior Der."}
@@ -142,24 +142,24 @@ export const PoloPreview = ({ design, config }: PoloPreviewProps) => {
             </span>
           </div>
           {design && (
-            <div className="pt-2 border-t">
-              <span className="font-medium text-gray-700">Diseño:</span>
-              <p className="text-sm text-gray-600 mt-1">{design.prompt}</p>
+            <div className="pt-4 border-t border-slate-200">
+              <span className="font-medium text-slate-700">Diseño:</span>
+              <p className="text-sm text-slate-600 mt-2 font-light leading-relaxed">{design.prompt}</p>
             </div>
           )}
         </div>
 
-        <div className="space-y-3">
+        <div className="space-y-6">
           <div className="text-center">
-            <span className="text-3xl font-bold text-gray-900">$29.99</span>
-            <span className="text-gray-500 ml-2">USD</span>
+            <span className="text-4xl font-light text-slate-900">$29.99</span>
+            <span className="text-slate-500 ml-2 text-lg">USD</span>
           </div>
           
           <Button 
             onClick={handleAddToCart}
-            className="w-full bg-gradient-to-r from-green-500 to-blue-500 hover:from-green-600 hover:to-blue-600 text-white font-medium py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-300"
+            className="w-full bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-medium py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base"
           >
-            <ShoppingCart className="h-4 w-4 mr-2" />
+            <ShoppingCart className="h-5 w-5 mr-3" />
             Añadir al Carrito
           </Button>
         </div>

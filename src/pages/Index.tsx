@@ -39,38 +39,38 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <Header />
       
-      <main className="container mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-4">
-            AI Polo Creations
+      <main className="container mx-auto px-6 py-12">
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-7xl font-light tracking-tight text-slate-900 mb-6">
+            AI Polo <span className="font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Creations</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Crea polos únicos con diseños generados por inteligencia artificial. 
-            Personaliza cada detalle y da vida a tu creatividad.
+          <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
+            Diseña polos únicos con la potencia de la inteligencia artificial. 
+            Personaliza cada detalle y transforma tus ideas en realidad.
           </p>
         </div>
 
-        <div className="flex justify-center mb-8">
-          <div className="bg-white rounded-full p-1 shadow-lg">
+        <div className="flex justify-center mb-12">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-2 shadow-lg border border-white/50">
             <button
               onClick={() => setActiveTab("design")}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 ${
                 activeTab === "design"
-                  ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md"
-                  : "text-gray-600 hover:text-gray-800"
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25"
+                  : "text-slate-600 hover:text-slate-800 hover:bg-white/50"
               }`}
             >
               Generar Diseño
             </button>
             <button
               onClick={() => setActiveTab("customize")}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
+              className={`px-8 py-4 rounded-xl font-medium transition-all duration-300 ${
                 activeTab === "customize"
-                  ? "bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-md"
-                  : "text-gray-600 hover:text-gray-800"
+                  ? "bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg shadow-blue-500/25"
+                  : "text-slate-600 hover:text-slate-800 hover:bg-white/50"
               }`}
             >
               Personalizar Polo
@@ -78,8 +78,8 @@ const Index = () => {
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
-          <div className="space-y-6">
+        <div className="grid lg:grid-cols-2 gap-12 max-w-7xl mx-auto">
+          <div className="space-y-8">
             {activeTab === "design" && (
               <DesignGenerator onDesignGenerated={handleDesignGenerated} />
             )}
