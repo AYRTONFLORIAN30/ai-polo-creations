@@ -11,7 +11,7 @@ export const Header = () => {
               <Shirt className="h-7 w-7 text-white" />
             </div>
             <span className="text-2xl font-light tracking-tight text-slate-900">
-              AI Polo <span className="font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Creations</span>
+              <span className="font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">AIrtist</span>
             </span>
           </div>
           

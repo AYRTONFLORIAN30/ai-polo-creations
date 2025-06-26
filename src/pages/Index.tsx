@@ -1,9 +1,9 @@
-
 import { useState } from "react";
 import { Header } from "@/components/Header";
 import { DesignGenerator } from "@/components/DesignGenerator";
 import { PoloCustomizer } from "@/components/PoloCustomizer";
 import { PoloPreview } from "@/components/PoloPreview";
+import { PaymentGateway } from "@/components/PaymentGateway";
 import { toast } from "sonner";
 
 export interface DesignData {
@@ -27,6 +27,7 @@ const Index = () => {
     size: "M"
   });
   const [activeTab, setActiveTab] = useState<"design" | "customize">("design");
+  const [showPayment, setShowPayment] = useState(false);
 
   const handleDesignGenerated = (design: DesignData) => {
     setCurrentDesign(design);
@@ -38,6 +39,35 @@ const Index = () => {
     setPoloConfig(prev => ({ ...prev, ...newConfig }));
   };
 
+  const handleAddToCart = () => {
+    if (!currentDesign) {
+      toast.error("Necesitas generar un diseño primero");
+      return;
+    }
+    toast.success("¡Polo añadido al carrito!");
+    setShowPayment(true);
+  };
+
+  const handlePaymentComplete = () => {
+    setShowPayment(false);
+    toast.success("¡Pedido realizado exitosamente!");
+  };
+
+  const handlePaymentCancel = () => {
+    setShowPayment(false);
+  };
+
+  if (showPayment) {
+    return (
+      <PaymentGateway
+        design={currentDesign}
+        config={poloConfig}
+        onPaymentComplete={handlePaymentComplete}
+        onCancel={handlePaymentCancel}
+      />
+    );
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-100">
       <Header />
@@ -45,7 +75,7 @@ const Index = () => {
       <main className="container mx-auto px-6 py-12">
         <div className="text-center mb-16">
           <h1 className="text-5xl md:text-7xl font-light tracking-tight text-slate-900 mb-6">
-            AI Polo <span className="font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">Creations</span>
+            <span className="font-semibold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">AIrtist</span>
           </h1>
           <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed font-light">
             Diseña polos únicos con la potencia de la inteligencia artificial. 
@@ -97,6 +127,7 @@ const Index = () => {
             <PoloPreview 
               design={currentDesign}
               config={poloConfig}
+              onAddToCart={handleAddToCart}
             />
           </div>
         </div>

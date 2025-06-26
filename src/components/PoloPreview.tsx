@@ -1,8 +1,6 @@
-
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Eye, ShoppingCart } from "lucide-react";
-import { toast } from "sonner";
 
 interface DesignData {
   imageUrl: string;
@@ -19,9 +17,10 @@ interface PoloConfig {
 interface PoloPreviewProps {
   design: DesignData | null;
   config: PoloConfig;
+  onAddToCart: () => void;
 }
 
-export const PoloPreview = ({ design, config }: PoloPreviewProps) => {
+export const PoloPreview = ({ design, config, onAddToCart }: PoloPreviewProps) => {
   const getPositionStyles = () => {
     switch (config.designPosition) {
       case "top-left":
@@ -46,14 +45,6 @@ export const PoloPreview = ({ design, config }: PoloPreviewProps) => {
       default:
         return "rounded-b-lg h-4";
     }
-  };
-
-  const handleAddToCart = () => {
-    if (!design) {
-      toast.error("Necesitas generar un diseño primero");
-      return;
-    }
-    toast.success("¡Polo añadido al carrito!");
   };
 
   return (
@@ -156,7 +147,7 @@ export const PoloPreview = ({ design, config }: PoloPreviewProps) => {
           </div>
           
           <Button 
-            onClick={handleAddToCart}
+            onClick={onAddToCart}
             className="w-full bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-medium py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-base"
           >
             <ShoppingCart className="h-5 w-5 mr-3" />
